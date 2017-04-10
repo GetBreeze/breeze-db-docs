@@ -11,12 +11,10 @@
     - [contains](#contains)
     - [first](#first)
     - [last](#last)
-    - [get](#get)
-    - [has](#has)
     - [isEmpty](#isempty)
     - [pluck](#pluck)
+    - [pluckAndKeyBy](#pluckandkeyby)
     - [prepend](#prepend)
-    - [pull](#pull)
     - [reduce](#reduce)
     - [search](#search)
     - [unique](#unique)
@@ -183,62 +181,6 @@ numbers.last(function(n:Number):Boolean {
 }); // -1
 ```
 
-### get
-
-The `get` method returns the value at a given key, or `null` if the key does not exist.
-
-```as3
-var deviceToPrice:Collection = new Collection(
-    { "iPhone 6": 549 },
-    { "iPhone SE": 399 },
-    { "Galaxy S6": 399 }
-);
-
-deviceToPrice.get("iPhone SE"); // 399
-```
-
-You can also provide a default value that will be returned if the key is not found:
-
-```as3
-var deviceToPrice:Collection = new Collection(
-    { "iPhone 6": 549 },
-    { "iPhone SE": 399 },
-    { "Galaxy S6": 399 }
-);
-
-deviceToPrice.get("iPad Pro", 0); // 0
-```
-
-The default value argument can be a `Function` that returns the value. If the searched key does not exist, the value returned by the function will be returned by the `get` method:
-
-```as3
-var deviceToPrice:Collection = new Collection(
-    { "iPhone 6": 549 },
-    { "iPhone SE": 399 },
-    { "Galaxy S6": 399 }
-);
-
-deviceToPrice.get("iPad Pro", function():Number
-{
-    return -1;
-}); // -1
-```
-
-### has
-
-The `has` method returns `true` if any item in the collection has the given key:
-
-```as3
-var deviceToPrice:Collection = new Collection(
-    { "iPhone 6": 549 },
-    { "iPhone SE": 399 },
-    { "Galaxy S6": 399 }
-);
-
-deviceToPrice.has("iPhone 6"); // true
-deviceToPrice.has("iPad Pro"); // false
-```
-
 ### isEmpty
 
 The `isEmpty` getter returns `true` if the collection has no items, `false` otherwise.
@@ -265,10 +207,18 @@ var devices:Collection = new Collection(
 devices.pluck("name").all; // ["iPhone 6", "iPhone SE", "Galaxy S6"]
 ```
 
-The second parameter specifies how the resulting collection is keyed:
+### pluckAndKeyBy
+
+The `pluckAndKeyBy` method can be used to create a mapping between values of two item keys. A key-value `Object` is returned where its properties are values corresponding to the key specified as the second argument:
 
 ```as3
-devices.pluck("price", "name").all; // [{"iPhone 6": 549}, {"iPhone SE": 399}, {"Galaxy S6": 399}]
+var devices:Collection = new Collection(
+    { name: "iPhone 6",    brand: "Apple",   price: 549 },
+    { name: "iPhone SE",   brand: "Apple",   price: 399 },
+    { name: "Galaxy S6",   brand: "Samsung", price: 399 }
+);
+
+devices.pluckAndKeyBy("price", "name"); // { "iPhone 6": 549, "iPhone SE": 399, "Galaxy S6": 399 }
 ```
 
 ### prepend
@@ -279,21 +229,6 @@ The `prepend` method adds an item to the beginning of the collection. If inserti
 var primes:Collection = new Collection(3, 5, 7, 11);
 primes.prepend(2);
 primes.all; // [2, 3, 5, 7, 11]
-```
-
-### pull
-
-The `pull` method removes and returns an item from the collection by its key.
-
-```as3
-var deviceToPrice:Collection = new Collection(
-    { "iPhone 6": 549 },
-    { "iPhone SE": 399 },
-    { "Galaxy S6": 399 }
-);
-
-deviceToPrice.pull("iPhone 6"); // { "iPhone 6": 549 }
-deviceToPrice.all; // [{ "iPhone SE": 399 }, { "Galaxy S6": 399 }]
 ```
 
 ### reduce
