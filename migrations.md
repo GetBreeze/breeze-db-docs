@@ -46,7 +46,7 @@ override public function run(db:IBreezeDatabase):void
 }
 ```
 
-Note that the name of the migration class is very important and you will not want to use generic names like `CustomMigration`. After a migration is completed successfully, its class name is stored in the database to make sure it is never run again. Therefore you should try to name your migration classes based on date and a short description of what it does, for example:
+Note that the name of the migration class is very important and you will not want to use generic names like `CustomMigration`. After a migration is completed successfully, its class name is stored in the database to make sure it is never run again. Therefore you should try to name your migration classes based on the date and a short description of what it does, for example:
 
 ```as3
 public class Migration_2017_06_25_Create_Photos_Table extends BreezeMigration

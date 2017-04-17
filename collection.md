@@ -195,7 +195,7 @@ primes.isEmpty; // false
 
 ### pluck
 
-The `pluck` method returns all values for the given key. The original collection is not modified, new `Collection` instance is returned instead.
+The `pluck` method returns all values for the given key. The original collection is not modified, a new `Collection` instance is returned instead.
 
 ```as3
 var devices:Collection = new Collection(
@@ -223,7 +223,7 @@ devices.pluckAndKeyBy("price", "name"); // { "iPhone 6": 549, "iPhone SE": 399, 
 
 ### prepend
 
-The `prepend` method adds an item to the beginning of the collection. If inserting a single element then this method is preferred to the `unshift` method where new allocation is made due to the `rest` parameter. New `Collection` is **not** created, the original instance is modified instead.
+The `prepend` method adds an item to the beginning of the collection. If inserting a single element then this method is preferred to the `unshift` method where new allocation is made due to the `rest` parameter. A new `Collection` is **not** created, the original instance is modified instead.
 
 ```as3
 var primes:Collection = new Collection(3, 5, 7, 11);
@@ -282,7 +282,7 @@ primes.search("5", true); // -1
 
 ### unique
 
-The `unique` method returns all of the unique items in the collection. The original collection is not modified, new `Collection` instance is returned instead.
+The `unique` method returns all of the unique items in the collection. The original collection is not modified, a new `Collection` instance is returned instead.
 
 ```as3
 var numbers:Collection = new Collection(1, 1, 3, 4, 6, 6, 7, 8);
@@ -320,7 +320,7 @@ function uniqueBrandPrice(device:Object):Boolean {
 
 ### where
 
-The `where` method filters the collection by the given key / value pair. Uses equality operator (`==`) to compare item values. The original collection is not modified, new `Collection` instance is returned instead.
+The `where` method filters the collection by the given key / value pair. Uses equality operator (`==`) to compare item values. The original collection is not modified, a new `Collection` instance is returned instead.
 
 ```as3
 var devices:Collection = new Collection(
@@ -354,7 +354,7 @@ trace(devicesFor399.all); // []
 
 ### whereIn
 
-The `whereIn` method filters the collection by the given key / value contained within the given `Array`. Uses equality operator (`==`) to compare item values. The original collection is not modified, new `Collection` instance is returned instead.
+The `whereIn` method filters the collection by the given key / value contained within the given `Array`. Uses equality operator (`==`) to compare item values. The original collection is not modified, a new `Collection` instance is returned instead.
 
 ```as3
 var devices:Collection = new Collection(

@@ -39,7 +39,7 @@ Query builder provides a convenient, fluent interface for creating and running d
 
 All queries are asynchronous, maximizing the responsiveness of your app. That also means the query result is not immediately available. Thus, in order to access the result data, you need to provide a callback method.
 
-The callback can specify up to 2 parameters, no parameters are allowed as well. If you do specify parameters, the first one must always be of type `Error` - each query returns an error as the first argument, or `null` if no error has occurred. The data type of the second parameter depends on the type of query it corresponds to. See the documentation for each query to learn how to format your callbacks.
+The callback can specify up to 2 parameters, and no parameters are allowed as well. If you do specify parameters, the first one must always be of type `Error` - each query returns an error as the first argument, or `null` if no error has occurred. The data type of the second parameter depends on the type of query it corresponds to. See the documentation for each query to learn how to format your callbacks.
 
 > Callback is always optional and the query will be executed even if it is not set, unless explicitly told not to (see [Delaying Query Execution](#delaying-query-execution)).
 
@@ -91,7 +91,7 @@ DB.table("photos").first(function(error:Error, firstPhoto:Object):void
 
 ### Chunking Results
 
-If you work with thousands of database records, consider using the `chunk` method. This method retrieves a small chunk of the results at a time and feeds each chunk into your callback `Function` for processing. For example, let"s work with the entire `photos` table in chunks of 100 records at a time:
+If you work with thousands of database records, consider using the `chunk` method. This method retrieves a small chunk of the results at a time and feeds each chunk into your callback `Function` for processing. For example, let's work with the entire `photos` table in chunks of 100 records at a time:
 
 
 ```as3
@@ -826,7 +826,7 @@ DB.table("photos")
 
 Deletes can be performed using the `remove` method.
 
-> The word `delete` is a reserved word in ActionScript and cannot be used as a method name.
+> Remember that this method is ```remove``` and not ```delete```. The word `delete` is a reserved word in ActionScript and cannot be used as a method name.
 
 You may constrain `DELETE` statements by adding `WHERE` clauses before calling the `remove` method. The callback receives a number of deleted rows:
 

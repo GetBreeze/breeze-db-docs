@@ -31,7 +31,7 @@ BreezeDb provides a simple and developer-friendly API for interacting with SQLit
 
 ## Accessing Databases
 
-To start interacting with databases, use the `BreezeDb` class. The static `db` getter returns a reference to the default database. To access a different database, you can use the `getDb` method along with the name of your database. A new database reference will be created for you, if it does not exist yet:
+To start interacting with databases, use the `BreezeDb` class. The static `db` getter returns a reference to the default database connection. If you are using multiple SQL databases and want to access a different database connection, you can use the `getDb` method along with the name of your database. A new database reference will be created for you, if it does not exist yet:
 
 ```as3
 var db:IBreezeDatabase = BreezeDb.db;
@@ -41,7 +41,7 @@ var customDb:IBreezeDatabase = BreezeDb.getDb("custom-db");
 
 ### DB Facade
 
-Most of the time you only need to interact with the default database. In these cases you can simply reference the `DB` facade class. This class provides static methods that mirror the API defined by `IBreezeDatabase` interface:
+Most of the time you only need to interact with the default database. In these cases you can simply reference the `DB` facade class. This class provides static methods that mirror the API defined by the `IBreezeDatabase` interface:
 
 ```as3
 // These two approaches are identical
@@ -93,7 +93,7 @@ You can also change the default file extension by setting the `fileExtension` pr
 DB.fileExtension = ".database";
 ```
 
-If needed, you can provide a reference to a file when calling the `setup` method. This file is then used instead of the default directory settings:
+If needed, you can provide a reference to a file when calling the `setup` method. This file is then used instead of the default directory and extension settings:
 
 ```as3
 DB.setup(callback, File.applicationStorageDirectory.resolvePath("custom-db-file.dat));
@@ -161,7 +161,7 @@ DB.runMigrations(Migration_Create_Photos_Table, function(error:Error):void
 
 The BreezeDb API provides callbacks as a way to retrieve response. It is more convenient than using event listeners due to less code needed and better response formatting for the various methods that are available.
 
-However, you can still make use of the standard events, for example if you want to log errors or executed queries for analytics. There are 3 main types of events:
+However you can still make use of the standard events, for example if you want to log errors or executed queries for analytics. There are 3 main types of events:
 
 * `BreezeDatabaseEvent` - provides information about database operations, e.g. setup, close and transaction state.
 * `BreezeQueryEvent` - provides information about executed queries.
@@ -214,7 +214,7 @@ This event has no custom properties. You can listen to the `BreezeQueryEvent.ERR
 
 ## Running Raw SQL Queries
 
-The database provides API for running raw SQL queries. You can run `SELECT`, `INSERT`, `DELETE` and `UPDATE` queries by using the corresponding method. For any other queries, you can use the `query` method.
+The database provides an API for running raw SQL queries. You can run `SELECT`, `INSERT`, `DELETE` and `UPDATE` queries by using the corresponding method. For any other queries, you can use the generic  `query` method.
 
 ### Running A Select Query
 
@@ -269,7 +269,7 @@ DB.update("UPDATE photos SET title = :title WHERE id = :id", { id: 1, title: "Su
 
 Deletes can be performed using the `remove` method. Just as in the case of the `update` method, the callback receives an `int` that specifies how many rows were deleted:
 
-> The word `delete` is a reserved word in ActionScript and cannot be used as a method name.
+> Remember that this method is ```remove``` and not ```delete```. The word `delete` is a reserved word in ActionScript and cannot be used as a method name.
 
 ```as3
 DB.remove("DELETE FROM photos WHERE id = :id", { id: 5 }, function(error:Error, rowsDeleted:int):void
@@ -408,7 +408,7 @@ function onTransactionRolledBack(error:Error):void
 
 ## Running Multiple Queries
 
-To execute multiple raw queries with a single method call, you can use the `multiQuery` method and passing in an `Array` of queries. This method is an exception to the errors-first rule regarding the callback parameters. Instead, a list of `BreezeQueryResult` is given where each result has the `error` property:
+To execute multiple raw queries with a single method call, you can use the `multiQuery` method and pass in an `Array` of queries. This method is an exception to the errors-first rule regarding the callback parameters. Instead, a list of `BreezeQueryResult` is given where each result has the `error` property:
 
 ```as3
 DB.multiQuery([

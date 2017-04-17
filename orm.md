@@ -75,7 +75,7 @@ public class Photo extends BreezeModel
 
 ### Table Name
 
-The table corresponding to the model is automatically derived from the model's class name:
+The table corresponding to the model is automatically derived from the model's class name using "snake case":
 
 | Class name   | Table name    |
 |--------------|---------------|
