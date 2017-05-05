@@ -75,12 +75,12 @@ public class Photo extends BreezeModel
 
 ### Table Name
 
-The table corresponding to the model is automatically derived from the model's class name using "snake case":
+The name of the table corresponding to the model is automatically derived from the model's class name using "snake case" and plural form.
 
-| Class name   | Table name    |
-|--------------|---------------|
-| `Photo`      | `photo`       |
-| `PhotoAlbum` | `photo_album` |
+| Class name   | Table name     |
+|--------------|----------------|
+| `Photo`      | `photos`       |
+| `PhotoAlbum` | `photo_albums` |
 
 You can also explicitly specify the table name if you wish by setting the protected `_tableName` variable in the model's constructor:
 
