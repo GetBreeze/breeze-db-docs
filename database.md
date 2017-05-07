@@ -128,7 +128,7 @@ DB.encryptionKey = key;
 
 Migrations allow you to create and edit your database structure between app versions.
 
-> See the [Migrations document](migrations.md) to learn more about this feature.
+> See the [Migrations document](../migrations/) to learn more about this feature.
 
 BreezeDb allows you to run migrations either during a database setup or after setup at any time.
 
@@ -252,7 +252,7 @@ DB.insert("INSERT INTO photos (id, name) VALUES (:id, :name)", {id: 1, name: "Te
 });
 ```
 
-> The `insert` method provided by the database can insert only one row. To perform a multi-row insert, use [BreezeQueryBuilder instead](query-builder.md#inserts).
+> The `insert` method provided by the database can insert only one row. To perform a multi-row insert, use [BreezeQueryBuilder instead](../query-builder/#inserts).
 
 ### Running An Update Statement
 
