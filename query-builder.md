@@ -1,6 +1,6 @@
 # Query Builder
 
-<!-- TOC -->
+<!-- TOC depthTo:3 -->
 
 - [Introduction](#introduction)
 - [Retrieving Results](#retrieving-results)
@@ -18,11 +18,6 @@
 - [Where Clauses](#where-clauses)
     - [Simple Where Clauses](#simple-where-clauses)
     - [Additional Where Clauses](#additional-where-clauses)
-        - [whereBetween / whereNotBetween](#wherebetween--wherenotbetween)
-        - [whereIn / whereNotIn](#wherein--wherenotin)
-        - [whereNull / whereNotNull](#wherenull--wherenotnull)
-        - [whereDate / whereMonth / whereDay / whereYear](#wheredate--wheremonth--whereday--whereyear)
-        - [whereColumn](#wherecolumn)
     - [Parameter Grouping](#parameter-grouping)
 - [Ordering, Grouping, Limiting and Offset](#ordering-grouping-limiting-and-offset)
 - [Inserts](#inserts)
