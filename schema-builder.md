@@ -134,7 +134,7 @@ DB.schema.dropTable("photos", function(error:Error):void
 You can use the `dropTableIfExists` method if you do not wish to receive an error in case the table does not exist:
 
 ```as3
-DB.schema.dropTable("photos", function(error:Error):void
+DB.schema.dropTableIfExists("photos", function(error:Error):void
 {
 
 });
