@@ -146,8 +146,6 @@ DB.schema.dropTableIfExists("photos", function(error:Error):void
 
 After a table has been created you can add new columns using the `editTable` method:
 
-> SQLite does not allow you to modify a column once it has been created.
-
 ```as3
 DB.schema.editTable("photos", function(table:TableBlueprint):void
 {
@@ -159,6 +157,8 @@ function(error:Error):void
 
 });
 ```
+
+> SQLite does not allow you to modify a column once it has been created.
 
 ### Column Types
 
