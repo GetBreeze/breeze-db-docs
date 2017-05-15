@@ -176,7 +176,9 @@ To create a column, you can use one of the available methods on the `TableBluepr
 
 The `TableBlueprint` also provides a method called `increments` that creates the following column constraints:
 
-`INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL`
+```
+INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL
+```
 
 ### Column Constraints
 
