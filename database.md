@@ -77,10 +77,10 @@ var db2:IBreezeDatabase = BreezeDb.getDb("database");
 trace(db1 == db2); // true
 ```
 
-To change the default directory, set the `file` property:
+To change the default directory, set the `storageDirectory` property:
 
 ```as3
-DB.file = File.documentsDirectory;
+BreezeDb.storageDirectory = File.documentsDirectory;
 ```
 
 The documents directory will now be used for all newly set up databases.
@@ -90,7 +90,7 @@ The documents directory will now be used for all newly set up databases.
 You can also change the default file extension by setting the `fileExtension` property:
 
 ```as3
-DB.fileExtension = ".database";
+BreezeDb.fileExtension = ".database";
 ```
 
 If needed, you can provide a reference to a file when calling the `setup` method. This file is then used instead of the default directory and extension settings:
