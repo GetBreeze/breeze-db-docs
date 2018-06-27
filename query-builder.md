@@ -30,6 +30,14 @@
 
 Query builder provides a convenient, fluent interface for creating and running database queries. It can be used to perform most database operations in your application. The builder also uses automatic parameter binding to protect your application against SQL injection attacks.
 
+BreezeDb also supports query queuing that guarantees the queries are executed one after another, in the order they are created. [Delayed queries](#delaying-query-execution) are added to the queue only when manually executed. The queue is disabled by default and can be enabled by setting the value of `isQueryQueueEnabled` to `true`:
+
+```as3
+BreezeDb.isQueryQueueEnabled = true;
+```
+
+> Make sure there are no queries running when changing this option.
+
 ## Retrieving Results
 
 All queries are asynchronous, maximizing the responsiveness of your app. That also means the query result is not immediately available. Thus, in order to access the result data, you need to provide a callback method.

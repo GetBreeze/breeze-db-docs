@@ -214,7 +214,15 @@ This event has no custom properties. You can listen to the `BreezeQueryEvent.ERR
 
 ## Running Raw SQL Queries
 
-The database provides an API for running raw SQL queries. You can run `SELECT`, `INSERT`, `DELETE` and `UPDATE` queries by using the corresponding method. For any other queries, you can use the generic  `query` method.
+The database provides an API for running raw SQL queries. You can run `SELECT`, `INSERT`, `DELETE` and `UPDATE` queries by using the corresponding method. For any other queries, you can use the generic `query` method.
+
+BreezeDb also supports query queuing that guarantees the queries are executed one after another, in the order they are created. [Delayed queries](../query-builder/#delaying-query-execution) are only added to the queue when manually executed. The queue is disabled by default and can be enabled by setting the value of `isQueryQueueEnabled` to `true`:
+
+```as3
+BreezeDb.isQueryQueueEnabled = true;
+```
+
+> Make sure there are no queries running when changing this option.
 
 ### Running A Select Query
 
